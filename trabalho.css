@@ -86,5 +86,5 @@ tbody input[type="checkbox"]:checked {
 }
 
 .coletado {
-    text-decoration: line-through #198754;
+    text-decoration: line-through #000;
 }

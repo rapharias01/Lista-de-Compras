@@ -178,26 +178,29 @@ function carregarLista() {
     const bodyLista = document.getElementById('bodyLista');
     const lista = controladorProduto.getListaProduto();
     let linhas = '';
-    for (let i = 0; i < lista.length; i++) {
-        const { codigo, nome, unidade, quantidade, coletado } = lista[i];
-        const tdQuantidadeId = `tdQuantidade_${codigo}`; // ID para cada input de quantidade
-        const tdCheckboxId = `tdCheckbox_${codigo}`; // ID para cada checkbox
-        const coletadoChecked = coletado ? 'checked' : ''; // Verifica se o produto está coletado para marcar o checkbox
-        linhas += `<tr>
-          <td>${codigo}</td>
-          <td>${nome}</td>
-          <td>${unidade}</td>
-          <td>${quantidade}</td>
-          <td><input class="col-3" type="number" id="${tdQuantidadeId}" onchange="verificarQuantidade(${codigo})"></td>
-          <td><input type="checkbox" id="${tdCheckboxId}" onchange="marcarColetado(${codigo})" ${coletadoChecked}></td>
-          <td><button class="btn btn-outline-success" onclick="editar(${codigo})">editar</button></td>
-        </tr>`;
-    }
+  
+    lista.forEach((produto) => {
+      const { codigo, nome, unidade, quantidade, coletado } = produto;
+      const tdQuantidadeId = `tdQuantidade_${codigo}`;
+      const tdCheckboxId = `tdCheckbox_${codigo}`;
+      const coletadoChecked = coletado ? 'checked' : '';
+  
+      linhas += `<tr>
+        <td>${codigo}</td>
+        <td>${nome}</td>
+        <td>${unidade}</td>
+        <td>${quantidade}</td>
+        <td><input class="col-3" type="number" id="${tdQuantidadeId}" onchange="verificarQuantidade(${codigo})"></td>
+        <td><input type="checkbox" id="${tdCheckboxId}" onchange="marcarColetado(${codigo})" disabled ${coletadoChecked}></td>
+        <td><button class="btn btn-outline-success" onclick="editar(${codigo})">editar</button></td>
+      </tr>`;
+    });
+  
     bodyLista.innerHTML = linhas;
-
-    verificarTodosColetados(); // Chama a função para verificar se todos os produtos estão coletados
+  
+    verificarTodosColetados();
     controladorProduto.verificarTodosMarcados();
-}
+  }
 //Salva a lista de produtos no armazenamento local.
 function salvarListaCompras() {
     const listaCompras = controladorProduto.getListaProduto();
@@ -208,14 +211,13 @@ function salvarListaCompras() {
 function marcarColetado(codigo) {
     const produto = controladorProduto.getProduto(codigo);
     const tdCheckbox = document.getElementById(`tdCheckbox_${codigo}`);
-
+  
     if (produto && tdCheckbox) {
-        produto.coletado = tdCheckbox.checked;
-        // Atualiza o valor no localStorage
-        localStorage.setItem('listaCompras', JSON.stringify(controladorProduto.getListaProduto()));
+      produto.coletado = tdCheckbox.checked;
+      localStorage.setItem('listaCompras', JSON.stringify(controladorProduto.getListaProduto()));
     }
     verificarTodosColetados();
-}
+  }
 //Verifica se todos os produtos estão coletados e habilita/desabilita o botão "Enviar".
 function verificarTodosColetados() {
     const lista = controladorProduto.getListaProduto();
