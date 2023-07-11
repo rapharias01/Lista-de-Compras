@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="trabalho.css">
+    <link rel="icon" href="5087847.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="cabecalho">
+        <ul>
+            <li>
+                <p>Lista de Compras<img src="5087847.png" height="17px"></p>
+            </li>
+            <li style="float:right"><a class="active" href="Lista.html">Produtos</a></li>
+        </ul>
+    </div>
+    <div class="tituloCad">
+        <h2 style="color: rgb(37, 29, 29);">Cadastro de produtos</h2>
+    </div>
+    <div class="container col-md-3">
+        <div class="row" onload="editar(codigo)">
+            <div class="card">
+            <label for="codigo" class="form-label">Codigo</label>
+            <input id="codigo" class="form-control col-md-3" type="number" disabled>
+            <label for="nome" class="form-label">Nome do Produto*</label>
+            <input id="nome" class="form-control" type="text">
+            <label for="unidade" class="form-label">Unidade*</label>
+            <select id="unidade" class="form-select">
+                <option></option>
+                <option>Un</option>
+                <option>Kg</option>
+                <option>Lt</option>
+                <option>Mt</option>
+                <option>Pc</option>
+            </select>
+            <label for="quantidade" class="form-label">Quantidade*</label>
+            <input id="quantidade" class="form-control" type="number">
+            <label for="codBarra" class="form-label">Codigo de Barras</label>
+            <input id="codBarra" class="form-control" type="text" maxlength="13">
+            <p>campos com (*) são obrigatorios</p>
+            </div>            
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <button class="m-1 btn btn-outline-success" onclick="salvar()">Salvar</button>
+        <button class="m-1 btn btn btn-outline-success"onclick="novo()">Novo</button>
+        <button class="m-1 btn btn btn-outline-success"onclick="excluir()">Excluir</button>
+    </div>
+    <script src="trabalho.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        // Obtém o código do produto da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const codigo = urlParams.get('codigo');
+
+        // Verifica se existe um código válido na URL
+        if (codigo) {
+            // Carrega o produto com o código correspondente
+            const produto = controladorProduto.getProduto(codigo);
+
+            // Preenche os campos de entrada de dados com as informações do produto
+            document.getElementById('codigo').value = produto.codigo;
+            document.getElementById('nome').value = produto.nome;
+            document.getElementById('unidade').value = produto.unidade;
+            document.getElementById('quantidade').value = produto.quantidade;
+            document.getElementById('codBarra').value = produto.codBarra;
+        }
+    </script>
+</body>
+
+</html>

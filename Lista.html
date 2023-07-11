@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <link rel="stylesheet" href="trabalho.css">
+    <link rel="icon" href="5087847.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body onload="carregarLista()">
+    <div class="cabecalho">
+        <ul>
+            <li>
+                <p>Lista de Compras<img src="5087847.png" height="17px"></p>
+            </li>
+            <li style="float:right"><a class="active" href="Cadastro.html">Cadastro</a></li>
+        </ul>
+    </div>
+    <div class="tituloCad">
+        <h2 style="color: rgb(37, 29, 29);">Lista de Compras</h2>
+    </div>
+
+    <table class="col-sm-6 text-center table table-striped">
+        <thead>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Unidade</th>
+            <th>Quantidade Nescessaria</th>
+            <th>Quantidade Comprada</th>
+            <th>Coletado</th>
+            <th>Opções</th>
+        </thead>
+        <tbody id="bodyLista" class="justify-content-center"></tbody>
+    </table>
+    <div class="botaoEnviar">
+        <button id="btnEnviar" class="btn btn-outline-success" disabled onclick="enviar()">Enviar</button>
+    </div>
+    <script src="trabalho.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

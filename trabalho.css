@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.cabecalho ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    color: white;
+    float: left;
+}
+
+li p {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 15px 0 0 10px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #198754;
+    color:white;
+}
+
+.cadastro {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 50px auto;
+    width: 30%;
+    background-color: #9c9595;
+}
+
+.tituloCad {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.cadastro button {
+    border-radius: 10px;    
+    margin-left: 8px;
+    width: 100px;
+}
+
+p {
+    text-align: center;
+}
+
+tbody input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+tbody input[type="checkbox"]:checked {
+    background-color: #198754;
+}
+
+.botaoEnviar {
+    display: flex;
+    justify-content: center;
+}
+
+.botaoEnviar button {
+    border-radius: 10px;
+    width: 100px;
+}
+
+.coletado {
+    text-decoration: line-through #198754;
+}
