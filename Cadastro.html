@@ -23,34 +23,46 @@
     <div class="tituloCad">
         <h2 style="color: rgb(37, 29, 29);">Cadastro de produtos</h2>
     </div>
-    <div class="container col-md-3">
+    <div class="container col-md-3 cadastro">
         <div class="row" onload="editar(codigo)">
-            <div class="card">
-            <label for="codigo" class="form-label">Codigo</label>
-            <input id="codigo" class="form-control col-md-3" type="number" disabled>
-            <label for="nome" class="form-label">Nome do Produto*</label>
-            <input id="nome" class="form-control" type="text">
-            <label for="unidade" class="form-label">Unidade*</label>
-            <select id="unidade" class="form-select">
-                <option></option>
-                <option>Un</option>
-                <option>Kg</option>
-                <option>Lt</option>
-                <option>Mt</option>
-                <option>Pc</option>
-            </select>
-            <label for="quantidade" class="form-label">Quantidade*</label>
-            <input id="quantidade" class="form-control" type="number">
-            <label for="codBarra" class="form-label">Codigo de Barras</label>
-            <input id="codBarra" class="form-control" type="text" maxlength="13">
-            <p>campos com (*) são obrigatorios</p>
-            </div>            
+            <div class="card p-3">
+                <div class="input-block">
+                    <label for="codigo" class="form-label">Codigo</label>
+                    <input id="codigo" class="form-control col-md-3" type="number" disabled>
+                </div>
+                <div class="input-block">
+                    <label for="nome" class="form-label">Nome do Produto*</label>
+                    <input id="nome" class="form-control" type="text">
+
+                </div>
+                <div class="input-block">
+                    <label for="unidade" class="form-label">Unidade*</label>
+                    <select id="unidade" class="form-select">
+                        <option></option>
+                        <option>Un</option>
+                        <option>Kg</option>
+                        <option>Lt</option>
+                        <option>Mt</option>
+                        <option>Pc</option>
+                    </select>
+                </div>
+                <div class="input-block">
+                    <label for="quantidade" class="form-label">Quantidade*</label>
+                    <input id="quantidade" class="form-control" type="number">
+
+                </div>
+                <div class="input-block">
+                    <label for="codBarra" class="form-label">Codigo de Barras</label>
+                    <input id="codBarra" class="form-control" type="text" maxlength="13">
+                </div>
+            </div>
+            <p>campos com "*" são obrigatorios</p>
+            <div class="d-flex justify-content-center">
+                <button class="m-1 btn btn-outline-success" onclick="salvar()">Salvar</button>
+                <button class="m-1 btn btn btn-outline-success" onclick="novo()">Novo</button>
+                <button class="m-1 btn btn btn-outline-success" onclick="excluir()">Excluir</button>
+            </div>
         </div>
-    </div>
-    <div class="d-flex justify-content-center mt-3">
-        <button class="m-1 btn btn-outline-success" onclick="salvar()">Salvar</button>
-        <button class="m-1 btn btn btn-outline-success"onclick="novo()">Novo</button>
-        <button class="m-1 btn btn btn-outline-success"onclick="excluir()">Excluir</button>
     </div>
     <script src="trabalho.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
