@@ -1,16 +1,28 @@
+/**
+ * Classe Produto representa um item de produto com informações básicas.
+ * @class
+ */
 class Produto {
     constructor() {
-        this.codigo = null;
-        this.nome = null;
-        this.unidade = null;
-        this.quantidade = null;
-        this.codBarra = null;
+        this.codigo = null;     // O código do produto.
+        this.nome = null;       // O nome do produto.
+        this.unidade = null;    // A unidade de medida do produto.
+        this.quantidade = null; // A quantidade do produto disponível.
+        this.codBarra = null;   // O código de barras do produto.
     }
 }
 
+/**
+ * Objeto controladorProduto gerencia a lista de produtos e suas operações.
+ * @type {Object}
+ */
 const controladorProduto = {
     listaProduto: [],
 
+    /**
+     * Obtém a lista de produtos armazenada no local storage.
+     * @returns {Array<Produto>} A lista de produtos.
+     */
     getListaProduto() {
         const str = window.localStorage.getItem('listaProduto');
         if (str) {
@@ -21,15 +33,27 @@ const controladorProduto = {
         return this.listaProduto;
     },
 
+    /**
+     * Retorna o produto com o código especificado.
+     * @param {number} codigo - O código do produto a ser encontrado.
+     * @returns {Produto|undefined} O produto encontrado ou undefined se não for encontrado.
+     */
     getProduto(codigo) {
         return this.getListaProduto().find((u) => u.codigo == codigo);
     },
 
+    /**
+     * Salva a lista de produtos no local storage.
+     */
     salvarListaProduto() {
         const strLista = JSON.stringify(this.listaProduto);
         window.localStorage.setItem('listaProduto', strLista);
     },
 
+    /**
+     * Salva um produto na lista. Se o produto já existir na lista, atualiza-o; caso contrário, adiciona-o.
+     * @param {Produto} produto - O produto a ser salvo ou atualizado.
+     */
     salvar(produto) {
         this.getListaProduto();
         if (produto.codigo !== null && produto.codigo > 0) {
@@ -45,6 +69,10 @@ const controladorProduto = {
         this.salvarListaProduto();
     },
 
+    /**
+     * Exclui um produto da lista com base no seu código.
+     * @param {number} codigo - O código do produto a ser excluído.
+     */
     excluir(codigo) {
         const index = this.listaProduto.findIndex((u) => u.codigo === codigo);
         if (index > -1) {
@@ -53,6 +81,10 @@ const controladorProduto = {
         this.salvarListaProduto();
     },
 
+    /**
+     * Exclui um produto da lista com base no seu código e carrega novamente a lista atualizada.
+     * @param {number} codigo - O código do produto a ser excluído.
+     */
     excluirProd(codigo) {
         const index = this.listaProduto.findIndex((u) => u.codigo === codigo);
         if (index > -1) {
@@ -62,6 +94,9 @@ const controladorProduto = {
         }
     },
 
+    /**
+     * Verifica se todos os checkboxes estão marcados e habilita o botão 'Enviar' em conformidade.
+     */
     verificarTodosMarcados() {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         let todasMarcadas = true;
@@ -77,6 +112,9 @@ const controladorProduto = {
         btnEnviar.disabled = !todasMarcadas;
     },
 
+    /**
+     * Exclui todos os produtos da lista e atualiza o local storage.
+     */
     excluirLista() {
         this.listaProduto = [];
         this.salvarListaProduto();

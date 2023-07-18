@@ -1,9 +1,18 @@
-//Link da API
+/**
+ * Link da API de compras.
+ * @type {string}
+ */
 const LINK_COMPRAS = "https://64b6d399df0839c97e162db2.mockapi.io/Compras";
+/**
+ * Link da API de produtos.
+ * @type {string}
+ */
 const LINK_PRODUTOS = "https://64b6d399df0839c97e162db2.mockapi.io/Compras/1/Produtos";
-//Envia a lista de produtos coletados para uma API de compras.
+/**
+ * Envia a lista de produtos coletados para uma API de compras.
+ */
 function enviar() {
-
+    // Exibe um aviso para confirmar o envio da lista de compras para a API
     confirmSend = window.confirm("Você está prestes a enviar a lista para API. deseja continuar?");
     if (confirmSend) {
         // Obter a lista de produtos da compra

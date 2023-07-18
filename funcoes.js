@@ -1,4 +1,6 @@
-//Limpa os campos de entrada de dados para adicionar um novo produto
+/**
+ * Limpa os campos de entrada de dados para adicionar um novo produto.
+ */
 function novo() {
     const codigo = document.getElementById('codigo');
     const nome = document.getElementById('nome');
@@ -11,7 +13,10 @@ function novo() {
     quantidade.value = '';
     codBarra.value = '';
 }
-//Verifica se os campos obrigatórios estão preenchidos.
+/**
+ * Verifica se os campos obrigatórios estão preenchidos.
+ * @returns {boolean} true se os campos obrigatórios estiverem preenchidos, caso contrário, retorna false.
+ */
 function verificarCamposObrigatorios() {
     const nome = document.getElementById('nome').value;
     const unidade = document.getElementById('unidade').value;
@@ -24,7 +29,9 @@ function verificarCamposObrigatorios() {
 
     return true;
 }
-//Salva ou atualiza um produto na lista de produtos.
+/**
+ * Salva ou atualiza um produto na lista de produtos.
+ */
 function salvar() {
     if (!verificarCamposObrigatorios()) {
         return;
@@ -60,12 +67,17 @@ function salvar() {
     novo();
     salvarListaCompras();
 }
-// Preenche os campos de entrada de dados com as informações de um produto para permitir a edição.
+/**
+ * Preenche os campos de entrada de dados com as informações de um produto para permitir a edição.
+ * @param {number} codigo - O código do produto a ser editado.
+ */
 function editar(codigo) {
     // Redireciona para a página de cadastro passando o código do produto como parâmetro na URL
     window.location.href = `Cadastro.html?codigo=${codigo}`;
 }
-//exclui os produtos da lista
+/**
+ * Exclui os produtos da lista.
+ */
 function excluir() {
     confirmDelete = window.confirm("essa ação vai excluir a lista de compras por completo");
     if(confirmDelete){
@@ -76,13 +88,19 @@ function excluir() {
     salvarListaCompras();
     }    
 }
-
+/**
+ * Exclui um produto da lista com base em seu código.
+ * @param {number} codigo - O código do produto a ser excluído.
+ */
 function excluirProd(codigo) {
     controladorProduto.excluir(codigo);
     carregarLista();
     salvarListaCompras();
 }
-//Verifica a quantidade de um produto e atualiza seu estado de coleta.
+/**
+ * Verifica a quantidade de um produto e atualiza seu estado de coleta.
+ * @param {number} codigo - O código do produto a ser verificado.
+ */
 function verificarQuantidade(codigo) {
     const produto = controladorProduto.getProduto(codigo);
     const tdQuantidade = document.getElementById(`tdQuantidade_${codigo}`);
@@ -106,7 +124,9 @@ function verificarQuantidade(codigo) {
         verificarTodosColetados(); // Verifica se todos os produtos estão coletados para habilitar o botão "Enviar"
     }
 }
-//Carrega a lista de produtos e exibe na tabela.
+/**
+ * Carrega a lista de produtos e exibe na tabela.
+ */
 function carregarLista() {
     const bodyLista = document.getElementById('bodyLista');
     const lista = controladorProduto.getListaProduto();
@@ -137,13 +157,18 @@ function carregarLista() {
     verificarTodosColetados();
     controladorProduto.verificarTodosMarcados();
 }
-//Salva a lista de produtos no armazenamento local.
+/**
+ * Salva a lista de produtos no armazenamento local.
+ */
 function salvarListaCompras() {
     const listaCompras = controladorProduto.getListaProduto();
     const strListaCompras = JSON.stringify(listaCompras);
     window.localStorage.setItem('listaCompras', strListaCompras);
 }
-//Marca um produto como coletado ou não.
+/**
+ * Marca um produto como coletado ou não.
+ * @param {number} codigo - O código do produto a ser marcado como coletado ou não coletado.
+ */
 function marcarColetado(codigo) {
     const produto = controladorProduto.getProduto(codigo);
     const tdCheckbox = document.getElementById(`tdCheckbox_${codigo}`);
@@ -154,7 +179,9 @@ function marcarColetado(codigo) {
     }
     verificarTodosColetados();
 }
-//Verifica se todos os produtos estão coletados e habilita/desabilita o botão "Enviar".
+/**
+ * Verifica se todos os produtos estão coletados e habilita/desabilita o botão "Enviar".
+ */
 function verificarTodosColetados() {
     const lista = controladorProduto.getListaProduto();
     const todosColetados = lista.every(produto => produto.coletado);
