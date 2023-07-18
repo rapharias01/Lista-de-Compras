@@ -41,7 +41,7 @@ Antes de enviar a lista, verifique se todos os produtos foram coletados (todos o
 Clique no botão "Enviar" para enviar a lista de compras para a API.
 A lista de compras e seus produtos serão enviados para o servidor.
 
-# Tecnologias utilizadas
+## Tecnologias utilizadas
 JavaScript
 HTML
 CSS
