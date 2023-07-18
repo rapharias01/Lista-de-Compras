@@ -1,6 +1,6 @@
 //Link da API
-const LINK_COMPRAS = "https://6492fc6f428c3d2035d10f08.mockapi.io/Compras";
-const LINK_PRODUTOS = "https://6492fc6f428c3d2035d10f08.mockapi.io/Compras/1/produto";
+const LINK_COMPRAS = "https://64b6d399df0839c97e162db2.mockapi.io/Compras";
+const LINK_PRODUTOS = "https://64b6d399df0839c97e162db2.mockapi.io/Compras/1/Produtos";
 //Envia a lista de produtos coletados para uma API de compras.
 function enviar() {
 
@@ -9,8 +9,8 @@ function enviar() {
         // Obter a lista de produtos da compra
         const listaProdutos = controladorProduto.getListaProduto();
         const compra = {
-            CodCompras: listaProdutos.length,
-            Data: new Date().toISOString(), // Obtém a data atual do sistema
+            id: listaProdutos.length,
+            Date: new Date().toISOString(), // Obtém a data atual do sistema
         };
 
         // Enviar a compra para o endpoint de compras

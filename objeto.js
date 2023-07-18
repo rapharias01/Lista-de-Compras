@@ -5,7 +5,6 @@ class Produto {
         this.unidade = null;
         this.quantidade = null;
         this.codBarra = null;
-        this.coletado = false;
     }
 }
 
